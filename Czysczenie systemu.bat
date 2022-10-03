@@ -40,6 +40,9 @@ rd /s /q %HomePath%\AppData\LocalLow\Temp
 rem Czysczenie kosza
 rd /s /q c:\$Recycle.Bin
 
+rem Cache google
+del /s /f /q %localappdata%\Google\Chrome\User Data\Default\Cache\Cache_Data\*.*
+
 rem Usuwanie niepotrzebnych folderow sterownikow (bo sa juz zainstalowane)
 rd /s /q %SYSTEMDRIVE%\AMD
 rd /s /q %SYSTEMDRIVE%\NVIDIA
