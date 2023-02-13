@@ -1,19 +1,19 @@
 @echo off
-rem Poprawiono literówke
+rem Poprawiono literowke
 
 rem Start jako administrator bez prawego przycisku
 set "params=%*"
 cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) && fsutil dirty query %systemdrive% 1>nul 2>nul || (  echo Set UAC = CreateObject^("Shell.Application"^) : UAC.ShellExecute "cmd.exe", "/k cd ""%~sdp0"" && %~s0 %params%", "", "runas", 1 >> "%temp%\getadmin.vbs" && "%temp%\getadmin.vbs" && exit /B )
 
-rem Kolejno: tytul, kolor czerowny 12.3.9 poprzednia
-title Czysczenie systemu (wersja 12.4 "Złomek")
+rem Kolejno: tytul, kolor czerowny 12.4 poprzednia
+title Czysczenie systemu (wersja 12.5 "Zlomek")
 color c
 
 rem Sprawdzenie czy uzytkownik posiada uprawnienia administratora (uzywane w momencie gdy skrypt wyzej sie wysypie)
 timeout /t 0 /nobreak > NUL
 openfiles > NUL 2>&1
 if %errorlevel%==0 (
-    echo Czyszczenie...
+    cls
 ) else (
     echo Wlacz program jako administrator.
     echo.
@@ -23,6 +23,15 @@ if %errorlevel%==0 (
     pause > NUL
     exit
 )
+
+
+echo   CCCC  HH      IIII                  HH      IIII  LL   LL  
+echo  CC     HH       II                   HH       II   LL   LL  
+echo CC      HH       II   NNNNN    CCCCC  HH       II   LL   LL  
+echo CC      HHHHH    II   NN  NN  CC      HHHHH    II   LL   LL  
+echo  CC     HH  HH   II   NN  NN  CC      HH  HH   II   LL   LL  
+echo   CCCC  HH  HH  IIII  NN  NN   CCCCC  HH  HH  IIII   LL   LL 
+
 
 rem Czysczenie kosza
 rd /s /q c:\$Recycle.Bin 
