@@ -1,13 +1,14 @@
 @echo off
+MODE 170,40
 rem Script written by Chinchill#5925 on Discord
-rem Poprawa czytelnosci kodu, usuniecie syfu ktory nic nie robil, zmiana kodu w taki sposob ze nie pokazuje bledow podczas usuwania
+rem Duzo zmian, dodanie IE, Microsoft Edge, Minecraft, wiekszej ilosci miejsc do logow
 
 rem Start jako administrator bez menu kontekstowego
 set "params=%*"
 cd /d "%~dp0" && ( if exist "%Temp%\getadmin.vbs" del "%Temp%\getadmin.vbs" ) && fsutil dirty query %systemdrive% 1>nul  || (  echo Set UAC = CreateObject^("Shell.Application"^) : UAC.ShellExecute "cmd.exe", "/k cd ""%~sdp0"" && %~s0 %params%", "", "runas", 1 >> "%Temp%\getadmin.vbs" && "%Temp%\getadmin.vbs" && exit /B )
 
-rem Kolejno: tytul okna, kolor blekitny "12.7.1 Dwa modularne krzesla" poprzednia
-title Czysczenie systemu (wersja 12.7.2 "Trzy modularne krzesla")
+rem Kolejno: tytul okna, kolor blekitny "12.7.2 Trzy modularne krzesla" poprzednia
+title Czysczenie systemu (wersja 13 "13-sto konna pila mechaniczna")
 color b
 
 rem Sprawdzenie czy uzytkownik posiada uprawnienia administratora (uzywane w momencie gdy skrypt wyzej sie wysypie)
@@ -43,11 +44,20 @@ if %errorlevel%==0 (
  echo.
  echo.
  echo Witaj, %USERNAME%
- 
-rem Poprzednia wersja tego czegos nie brala pod uwage tego ze to ma dzialac dobrze a nie szybko
+ echo.
+ echo.
+
+   
+rem Jednak poprzednia wersja dzialala tak wolno ze na dysku ssd sata3 zajelo to 15,5 minuty
+rem Cofnieto poprzednia zmiane
 color c
-cd \
-del *.log /a /s /q /f 2>nul
+
+del %HomePath%\*.log /a /s /q /f 2>nul
+del %ProgramFiles%\*.log /a /s /q /f 2>nul
+del %ProgramFiles(x86)%\*.log /a /s /q /f 2>nul
+del %SystemRoot%\System32\*.log /a /s /q /f 2>nul
+del %SystemRoot%\System32\*.tmp /a /s /q /f 2>nul
+del %SystemRoot%\System32\LogFiles\*.* /a /s /q /f 2>nul
 cd C:
 
 
@@ -70,8 +80,6 @@ md %Temp%
 md %AppData%\Temp 
 md %HomePath%\AppData\LocalLow\Temp 
 cd C:/
-color c
-
 rem Crash dumpy
 del /s /f /q %LocalAppData%\CrashDumps\*.* 2>nul 
 cd C:/
@@ -80,22 +88,28 @@ color 8
 
 rem Pojedyncze aplikacje o ktorych wiem
 
+rem Juz nawet nie pamietam co to jest najprawdopodobniej internet explorer
+cd %LocalAppData%
+del /s /f /q Microsoft\Windows\INetCache\IE\*.* 2>nul
+del /s /f /q Microsoft\Windows\WebCache\*.* 2>nul
 rem Betterdiscord (niepotrzebne pliki instalatora)
 cd %AppData%
 rd /s /q "BetterDiscord Installer" 
-rem Cache Crystal Launcher
+rem Crystal Launcher
 rd /s /q Crystal-Launcher\cache 
-rem Cache Discord
+rem Discord
 rd /s /q discord\Cache
 rd /s /q discord\"Code Cache"\js
 rd /s /q discord\GPUCache 
-rem Cache Lunar Client
+rem Lunar Client
 rd /s /q lunarclient\Cache 
+rem Minecraft, logow nie czyszcze bo logi sie przydaja
+del /s /f /q %appdata%\.minecraft\crash-reports\*.* 2>nul
 rem Cache Logitech G-HUB
 rd /s /q LGHUB\Cache\Cache_Data
 rd /s /q LGHUB\"Code Cache"\js
 rd /s /q LGHUB\GPUCache
-rem Cache Steelseries GG
+rem Steelseries GG
 rd /s /q steelseries-gg-client\Cache
 rd /s /q steelseries-gg-client\"Code Cache"\js
 rd /s /q steelseries-gg-client\GPUCache
@@ -111,8 +125,17 @@ rd /s /q "Service Worker"\CacheStorage
 rd /s /q "Service Worker"\ScriptCache 
 rd /s /q "Code Cache"\js
 color e
-rem Cache google
+rem Google Chrome
 cd %LocalAppData%\Google\Chrome\User Data\Default
+rd /s /q "File System" 
+del /s /f /q Cache\Cache_Data\*.* 2>nul 
+del /s /f /q DawnCache\*.* 2>nul 
+del /s /f /q GPUCache\*.* 2>nul 
+rd /s /q "Service Worker"\CacheStorage 
+rd /s /q "Service Worker"\ScriptCache 
+rd /s /q "Code Cache"\js 
+rem Microsoft Edge
+cd %LocalAppData%\Microsoft\Edge\User Data\Default
 rd /s /q "File System" 
 del /s /f /q Cache\Cache_Data\*.* 2>nul 
 del /s /f /q DawnCache\*.* 2>nul 
