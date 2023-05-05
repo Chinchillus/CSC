@@ -1,38 +1,38 @@
 @echo off
 color c
 MODE 170,40
-rem Script written by Chinchill#5925 on Discord
-rem Nie chce mi sie pisac changelogu bo i tak go nikt nie czyta
-
-rem Start jako administrator bez menu kontekstowego
+rem Script written by Chinchill#5925
 set "params=%*"
 cd /d "%~dp0" && ( if exist "%Temp%\getadmin.vbs" del "%Temp%\getadmin.vbs" ) && fsutil dirty query %systemdrive% 1>nul  || (  echo Set UAC = CreateObject^("Shell.Application"^) : UAC.ShellExecute "cmd.exe", "/k cd ""%~sdp0"" && %~s0 %params%", "", "runas", 1 >> "%Temp%\getadmin.vbs" && "%Temp%\getadmin.vbs" && exit /B )
 
-rem Kolejno: tytul okna, kolor blekitny "13-sto konna wiertarka mechaniczna' " poprzednia
-title Czysczenie systemu (wersja 13.5 "Wiertarka spalinowa")
-
-echo                                                              
-echo                                                              
-echo         CCCCCCCCCCCCC   SSSSSSSSSSSSSSS         CCCCCCCCCCCCC
-echo      CCC::::::::::::C SS:::::::::::::::S     CCC::::::::::::C
-echo    CC:::::::::::::::CS:::::SSSSSS::::::S   CC:::::::::::::::C
-echo   C:::::CCCCCCCC::::CS:::::S     SSSSSSS  C:::::CCCCCCCC::::C
-echo  C:::::C       CCCCCCS:::::S             C:::::C       CCCCCC
-echo C:::::C              S:::::S            C:::::C              
-echo C:::::C               S::::SSSS         C:::::C              
-echo C:::::C                SS::::::SSSSS    C:::::C              
-echo C:::::C                  SSS::::::::SS  C:::::C              
-echo C:::::C                     SSSSSS::::S C:::::C              
-echo C:::::C                          S:::::SC:::::C              
-echo  C:::::C       CCCCCC            S:::::S C:::::C       CCCCCC
-echo   C:::::CCCCCCCC::::CSSSSSSS     S:::::S  C:::::CCCCCCCC::::C
-echo    CC:::::::::::::::CS::::::SSSSSS:::::S   CC:::::::::::::::C
-echo      CCC::::::::::::CS:::::::::::::::SS      CCC::::::::::::C
-echo         CCCCCCCCCCCCC SSSSSSSSSSSSSSS           CCCCCCCCCCCCC
-echo                                                                                                                           
-echo Witaj, %USERNAME%
+title Czysczenie systemu (wersja 14 "Drzwi hybrydowe")
+:start
+echo.                                                             
+echo.                                                              
+echo        CCCCCCCCCCCCC     SSSSSSSSSSSSSSS         CCCCCCCCCCCCC
+echo      CCC::::::::::::C  SS:::::::::::::::S      CCC::::::::::::C
+echo    CC:::::::::::::::C S:::::SSSSSS::::::S    CC:::::::::::::::C
+echo   C:::::CCCCCCCC::::C S:::::S     SSSSSSS   C:::::CCCCCCCC::::C
+echo  C:::::C       CCCCCC S:::::S              C:::::C       CCCCCC
+echo C:::::C               S:::::S             C:::::C              
+echo C:::::C                S::::SSSS          C:::::C              
+echo C:::::C                 SS::::::SSSSS     C:::::C              
+echo C:::::C                   SSS::::::::SS   C:::::C              
+echo C:::::C                      SSSSSS::::S  C:::::C              
+echo C:::::C                           S:::::S C:::::C              
+echo  C:::::C       CCCCCC             S:::::S  C:::::C       CCCCCC
+echo   C:::::CCCCCCCC::::C SSSSSSS     S:::::S   C:::::CCCCCCCC::::C
+echo    CC:::::::::::::::C S::::::SSSSSS:::::S    CC:::::::::::::::C
+echo      CCC::::::::::::C S:::::::::::::::SS       CCC::::::::::::C
+echo        CCCCCCCCCCCCC   SSSSSSSSSSSSSSS           CCCCCCCCCCCCC
+echo.                                                                                                                           
+echo Witaj, %USERNAME%!
 echo.
-   
+timeout 1 >nul
+goto csc
+:csc
+cls
+rem SLJ BTG   
 rem Cofnieto zmiane
 echo Logi
 del %HomePath%\AppData\LocalLow\*.log /a /s /q /f 2>nul
@@ -54,6 +54,7 @@ rem Jakas tam naprawa kosza z Visty i Windowsa 7 (czasami pomaga na nowszych win
 
 color a
 rem Główne czyszczenie
+echo Wszystko i nic
 del /s /f /q %WinDir%\Prefetch\*.* 2>nul 
 del /s /f /q %Temp%\*.* 2>nul 
 del /s /f /q %AppData%\Temp\*.* 2>nul 
@@ -81,7 +82,7 @@ md %LocalAppData%\D3DSCache 2>nul
 cd C:/
 color 8
 
-rem Pojedyncze aplikacje o ktorych wiem
+rem Pojedyncze aplikacje o ktorych wiem (wahahahah bocik to gej)
 rem BetterDiscord, bezużyteczne pliki instalatora
 echo Betterdiscord
 cd %AppData%
@@ -93,7 +94,7 @@ rem Cache Discorda
 echo Discord
 rd /s /q discord\Cache
 rd /s /q discord\"Code Cache"\js
-rd /s /q discord\GPUCache 
+rd /s /q discord\GPUCache
 rem Cache Lunar Client
 echo Lunar Client
 rd /s /q lunarclient\Cache 
@@ -123,5 +124,6 @@ rd /s /q "Service Worker"\CacheStorage
 rd /s /q "Service Worker"\ScriptCache 
 rd /s /q "Code Cache"\js
 color e
+:exit
+taskkill /F /IM explorer.exe & start explorer
 exit
-
