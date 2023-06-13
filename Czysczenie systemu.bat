@@ -2,10 +2,10 @@ rem if u are stealing my code please just add me to the credit @Chinchill#5925 (
 cls
 @echo off
 color c
-MODE 170,40
+MODE 140,40
 set "params=%*"
 cd /d "%~dp0" && ( if exist "%Temp%\getadmin.vbs" del "%Temp%\getadmin.vbs" ) && fsutil dirty query %systemdrive% 1>nul  || (  echo Set UAC = CreateObject^("Shell.Application"^) : UAC.ShellExecute "cmd.exe", "/k cd ""%~sdp0"" && %~s0 %params%", "", "runas", 1 >> "%Temp%\getadmin.vbs" && "%Temp%\getadmin.vbs" && exit /B )
-title CSC (v14.1 "Szklane drzwi hybrydowe")
+title CSC (v14.5 "Podwójne szklane drzwi hybrydowe")
 :start
 echo.
 echo.
@@ -32,6 +32,7 @@ timeout /t 1 /nobreak >nul
 goto csc
 :csc
 cls 
+rem if u are stealing my code please just add me to the credit @Chinchill#5925 (Discord)
 echo Logi
 del %HomePath%\AppData\LocalLow\*.log /a /s /q /f 2>nul
 del %HomePath%\AppData\Roaming\*.log /a /s /q /f 2>nul
@@ -49,6 +50,7 @@ del %WinDir%\setuperr.log
 cd C:
 rd /s /q C:\$Recycle.bin
 color a
+rem if u are stealing my code please just add me to the credit @Chinchill#5925 (Discord)
 echo Wszystko i nic
 del /s /f /q %WinDir%\Prefetch\*.* 2>nul 
 del /s /f /q %Temp%\*.* 2>nul 
@@ -72,6 +74,7 @@ del /s /f /q %LocalAppData%\CrashDumps\*.* 2>nul
 echo DirectX
 rd /s /q %LocalAppData%\D3DSCache 2>nul
 md %LocalAppData%\D3DSCache 2>nul
+rem if u are stealing my code please just add me to the credit @Chinchill#5925 (Discord)
 cd C:/
 color 8
 echo Betterdiscord
@@ -85,6 +88,7 @@ rd /s /q obs-studio\plugin_config\obs-browser\GPUCache
 echo Crystal Launcher
 rd /s /q Crystal-Launcher\cache  
 echo Discord
+rem if u are stealing my code please just add me to the credit @Chinchill#5925 (Discord)
 rd /s /q discord\Cache
 rd /s /q discord\"Code Cache"\js
 rd /s /q discord\GPUCache
@@ -97,6 +101,7 @@ rd /s /q LGHUB\Cache\Cache_Data
 rd /s /q LGHUB\"Code Cache"\js
 rd /s /q LGHUB\GPUCache
 echo Steelseries GG
+rem if u are stealing my code please just add me to the credit @Chinchill#5925 (Discord)
 rd /s /q steelseries-gg-client\Cache
 rd /s /q steelseries-gg-client\"Code Cache"\js
 rd /s /q steelseries-gg-client\GPUCache
@@ -106,6 +111,7 @@ cd %LocalAppData%\Spotify
 rd /s /q Data
 cd Browser
 del /s /f /q Cache\Cache_Data\*.* 2>nul 
+rem if u are stealing my code please just add me to the credit @Chinchill#5925 (Discord)
 del /s /f /q DawnCache\*.* 2>nul 
 del /s /f /q GPUCache\*.* 2>nul 
 rd /s /q "Service Worker"\CacheStorage 
