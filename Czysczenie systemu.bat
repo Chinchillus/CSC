@@ -26,7 +26,7 @@ color c
 MODE 140,40
 set "params=%*"
 cd /d "%~dp0" && ( if exist "%Temp%\getadmin.vbs" del "%Temp%\getadmin.vbs" ) && fsutil dirty query %systemdrive% 1>nul  || (  echo Set UAC = CreateObject^("Shell.Application"^) : UAC.ShellExecute "cmd.exe", "/k cd ""%~sdp0"" && %~s0 %params%", "", "runas", 1 >> "%Temp%\getadmin.vbs" && "%Temp%\getadmin.vbs" && exit /B )
-title CSC (v15.1 "Plastikowy grzejnik")
+title CSC (v15.1 "Plastic radiator")
 :start
 echo.
 echo.
